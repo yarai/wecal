@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wecal-deployment
+  labels:
+    app: wecal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wecal
+  template:
+    metadata:
+      labels:
+        app: wecal
+    spec:
+      containers:
+      - name: wecal
+        image: gcr.io/wecal-kube/wecal:v1
+        ports:
+          - containerPort: 8080
