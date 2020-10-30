@@ -16,6 +16,25 @@ spec:
     spec:
       containers:
       - name: wecal
+        # image: yutaarai/wecal:1
         image: gcr.io/wecal-kube/wecal:v1
         ports:
           - containerPort: 8080
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+        - name: MONGO_CONFIG_MONGODB_SERVER
+          valueFrom: 
+            configMapKeyRef:
+              name: mongodb-configmap
+              key: database_url
+
+

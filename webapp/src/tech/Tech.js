@@ -15,6 +15,9 @@ export class Tech extends Component {
     }
 
     render() {
+        if (!this.state.technologies) {
+            return <div><em><strong>db data is missing</strong></em></div>
+        }
         const technologies = this.state.technologies.map((technology, i) =>
             <li key={i}>
                 <b>{technology.name}</b>: {technology.details}

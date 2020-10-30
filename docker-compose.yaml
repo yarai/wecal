@@ -5,14 +5,16 @@ services:
     container_name: app
     ports:
       - 8080:8080
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     environment:
       profile: prod
-  db:
-    image: mongo:4.2.3
-    container_name: db
-    environment:
-      MONGO_INITDB_DATABASE: tech
-    volumes:
-      - ./init-db.js:/docker-entrypoint-initdb.d/init.js
+      DB_CONNECTION: mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority
+      DB_NAME: ${DB_NAME}
+  # db:
+  #   image: mongo:4.2.3
+  #   container_name: db
+  #   environment:
+  #     MONGO_INITDB_DATABASE: tech
+  #   volumes:
+  #     - ./init-db.js:/docker-entrypoint-initdb.d/init.js

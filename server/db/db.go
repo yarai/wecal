@@ -17,7 +17,7 @@ type MongoDB struct {
 }
 
 func NewMongo(client *mongo.Client) DB {
-	tech := client.Database("tech").Collection("tech")
+	tech := client.Database("test").Collection("tech")
 	return MongoDB{collection: tech}
 }
 
