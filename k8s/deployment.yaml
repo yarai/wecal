@@ -17,7 +17,7 @@ spec:
       containers:
       - name: wecal
         # image: yutaarai/wecal:1
-        image: gcr.io/wecal-kube/wecal:v1
+        image: gcr.io/wecal-kube/wecal:v2
         ports:
           - containerPort: 8080
         env:
